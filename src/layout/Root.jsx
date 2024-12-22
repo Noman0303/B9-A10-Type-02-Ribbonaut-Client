@@ -5,7 +5,6 @@ const Root = () => {
   return (
     <div className='border-2'>
         <Outlet></Outlet>
-        <h2>This is Root</h2>
     </div>
   )
 }

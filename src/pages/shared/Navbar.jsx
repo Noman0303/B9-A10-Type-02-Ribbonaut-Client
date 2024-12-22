@@ -8,16 +8,9 @@ const Navbar = () => {
         <li><NavLink to='/allCraftItems'>All Art & Craft Items</NavLink></li>
         <li><NavLink to='/addCraftItems'>Add Craft Items</NavLink></li>
         <li><NavLink to='/myCraftList'>My Art & Craft List</NavLink></li>
-        {/* {
-            user ?
-                (<div>
-                </div>)
-                :
-                (<div>
-                    <li><NavLink to='/login'>Login</NavLink></li>
-                    <li><NavLink to='/register'>Register</NavLink></li>
-                </div>)
-        } */}
+        <li><NavLink to='/login'>Login</NavLink></li>
+        <li><NavLink to='/register'>Register</NavLink></li>
+
 
     </>
 
@@ -49,7 +42,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                {navLinks}
+                    {navLinks}
                 </ul>
             </div>
             <div className="navbar-end">
