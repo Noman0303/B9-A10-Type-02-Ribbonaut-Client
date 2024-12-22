@@ -1,18 +1,24 @@
-import React, { useContext } from 'react'
-import Header from '../shared/Header'
+import React, { useContext, useState } from 'react'
+
 import { AuthContext } from '../../provider/AuthProvider';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { IoLogoGithub } from "react-icons/io";
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer,  } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Header from '../shared/Header';
 
 
 
 
 const Login = () => {
 
-
-  const { } = useContext(AuthContext);
-  // const [showPassword, setShowPassword] = useState(false);
-  // const location = useLocation();
-  // const navigate = useNavigate();
-  // console.log('location in the login page', location)
+  const {signInUser,signInWithGoogle,signInWithGithub } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log('location in the login page', location)
 
   const handleLogin = e => {
       e.preventDefault();
@@ -22,48 +28,48 @@ const Login = () => {
       const password = form.password.value;
       console.log(email, password)
 
-    // signInUser(email, password)
-    //       .then(result => {
-    //           console.log(result.user);
-    //           toast.success('Login successful! Welcome!', { autoClose: 3000 })
-    //           // navigate after login
-    //           navigate(location?.state ? location.state : '/')
-    //       })
-    //       .catch(error => {
-    //           console.error(error);
-    //           toast.error('Login not successful. Please try again!', { autoClose: 3000 });
-    //       });
+    signInUser(email, password)
+          .then(result => {
+              console.log(result.user);
+              toast.success('Login successful! Welcome!', { autoClose: 3000 })
+              // navigate after login
+              navigate(location?.state ? location.state : '/')
+          })
+          .catch(error => {
+              console.error(error);
+              toast.error('Login not successful. Please try again!', { autoClose: 3000 });
+          });
 
-  // };
-
-
-  // const handleGoogleLogin = () => {
-  //     signInWithGoogle()
-  //         .then(result => {
-  //             console.log(result.user)
-  //             toast.success('Google login successful! Welcome!', { autoClose: 3000 });
-  //             // navigate after login
-  //             navigate(location?.state ? location.state : '/')
-  //         })
-  //         .catch(error => {
-  //             console.error(error);
-  //             toast.error('Google login failed. Please try again!', { autoClose: 3000 });
-  //         })
-  // }
-  // const handleGithubLogin = () => {
-  //     signInWithGithub()
-  //         .then(result => {
-  //             console.log(result.user)
-  //             toast.success('Github login successful! Welcome!', { autoClose: 3000 });
-  //             // navigate after login
-  //             navigate(location?.state ? location.state : '/')
-  //         })
-  //         .catch(error => {
-  //             console.error(error)
-  //             toast.error('Github login failed. Please try again!', { autoClose: 3000 });
-  //         })
+  };
 
 
+  const handleGoogleLogin = () => {
+      signInWithGoogle()
+          .then(result => {
+              console.log(result.user)
+              toast.success('Google login successful! Welcome!', { autoClose: 3000 });
+              // navigate after login
+              navigate(location?.state ? location.state : '/')
+          })
+          .catch(error => {
+              console.error(error);
+              toast.error('Google login failed. Please try again!', { autoClose: 3000 });
+          })
+  }
+
+
+  const handleGithubLogin = () => {
+      signInWithGithub()
+          .then(result => {
+              console.log(result.user)
+              toast.success('Github login successful! Welcome!', { autoClose: 3000 });
+              // navigate after login
+              navigate(location?.state ? location.state : '/')
+          })
+          .catch(error => {
+              console.error(error)
+              toast.error('Github login failed. Please try again!', { autoClose: 3000 });
+          })
   }
 
   return (
@@ -112,15 +118,15 @@ const Login = () => {
                 <button className='btn btn-ghost'><IoLogoGithub className=' w-7 h-7' onClick={handleGithubLogin} /></button>
               </div>
               <p className='text-center font-semibold mb-4 text-lg'>New to this website! Please
-                <Link className='text-blue-700' to="/registration"> Register</Link> </p>
+                <Link className='text-blue-700' to="/register"> Register</Link> </p>
             </div>
           </div>
-          <ToastContainer />
+        <ToastContainer></ToastContainer>
         </div>
       </div>
     </div>
 
   )
-}
 
+}
 export default Login

@@ -1,7 +1,23 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import { AuthContext } from '../../provider/AuthProvider'
 
 const Navbar = () => {
+
+    const{user, logOut} = useContext(AuthContext);
+    const [isHovered, setIsHovered] = useState(false);
+
+    const handleLogOut = () => {
+        logOut()
+          .then(() => {
+            console.log('User logged out successfully');
+            toast.success('User logged out successfully!', { autoClose: 3000 });
+          })
+          .catch(error => {
+            console.error(error);
+            toast.error('Logout failed. Please try again.', { autoClose: 3000 });
+          });
+      };
 
     const navLinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -46,7 +62,40 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+
+                {user ? (
+                    <div className="flex items-center space-x-4">
+                        <span
+                            className="relative"
+                            onMouseEnter={() => setIsHovered(true)}
+                            onMouseLeave={() => setIsHovered(false)}
+                        >
+                            <img
+                                src={user.photoURL}
+                                className="rounded-full w-8 h-auto inline-block"
+                                alt="User profile"
+                            />
+                            {isHovered && (
+
+                                <span className="absolute right-8 md:right-10 lg:right-10 w-auto p-1 text-xs text-white bg-black rounded-md">
+                                    {user.displayName}
+                                </span>
+                            )}
+                        </span>
+
+                        <button
+                            className="btn btn-sm lg:btn-base lg:text-lg"
+                            onClick={handleLogOut}
+                        >
+                            Log Out
+                        </button>
+                    </div>
+                ) : (
+                    <Link to="/login">
+                        <button className="btn btn-sm lg:btn-base lg:text-lg">Log in</button>
+                    </Link>
+                )}
+
             </div>
         </div>
     )
