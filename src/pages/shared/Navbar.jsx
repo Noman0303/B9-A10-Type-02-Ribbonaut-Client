@@ -4,28 +4,39 @@ import { AuthContext } from '../../provider/AuthProvider'
 
 const Navbar = () => {
 
-    const{user, logOut} = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [isHovered, setIsHovered] = useState(false);
 
     const handleLogOut = () => {
         logOut()
-          .then(() => {
-            console.log('User logged out successfully');
-            toast.success('User logged out successfully!', { autoClose: 3000 });
-          })
-          .catch(error => {
-            console.error(error);
-            toast.error('Logout failed. Please try again.', { autoClose: 3000 });
-          });
-      };
+            .then(() => {
+                console.log('User logged out successfully');
+                toast.success('User logged out successfully!', { autoClose: 3000 });
+            })
+            .catch(error => {
+                console.error(error);
+                toast.error('Logout failed. Please try again.', { autoClose: 3000 });
+            });
+    };
 
     const navLinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/allCraftItems'>All Art & Craft Items</NavLink></li>
         <li><NavLink to='/addCraftItems'>Add Craft Items</NavLink></li>
         <li><NavLink to='/myCraftList'>My Art & Craft List</NavLink></li>
-        <li><NavLink to='/login'>Login</NavLink></li>
-        <li><NavLink to='/register'>Register</NavLink></li>
+        {
+            user ?
+                (<div>
+
+                </div>) :
+                (<div className='flex'>
+                    <li><NavLink to='/login'>Login</NavLink></li>
+                    <li><NavLink to='/register'>Register</NavLink></li>
+                </div>
+                )
+        }
+
+
 
 
     </>
@@ -50,7 +61,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 shadow">
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-20 mt-3 w-52 shadow">
                         {navLinks}
                     </ul>
                 </div>
