@@ -1,16 +1,17 @@
 import React, { useState, useContext } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { FaEye,FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Header from '../shared/Header'
 import { AuthContext } from '../../provider/AuthProvider';
 import { Link } from 'react-router-dom';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
 
-  const {createUser} = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
-  
+
 
   const handleRegister = e => {
     e.preventDefault();
@@ -18,9 +19,9 @@ const Register = () => {
     const form = e.target
     const email = form.email.value;
     const password = form.password.value;
-    const photoURL =form.photoURL.value;
+    const photoURL = form.photoURL.value;
     const name = form.name.value;
-    console.log(email, password,photoURL,name)
+    console.log(email, password, photoURL, name)
 
     if (password.length < 6) {
       toast.error('Password should be at least 6 characters of longer', { autoClose: 2000 });
@@ -40,16 +41,42 @@ const Register = () => {
 
     // Create user in Firebase
 
-    createUser(email,password)
-    .then(result => {
-      console.log(result.user);
-      toast.success('Registration successful! Welcome!', { autoClose: 3000});
-    })
-    .catch(error =>{
-      console.error(error);
-      toast.error('Registration not successful. Please try again!', { autoClose: 3000 });
-    })
+    createUser(email, password)
+      .then(result => {
+        console.log(result.user);
+        return updateProfile(result.user, {
+          displayName: name,
+          photoURL: photoURL,
+        })
+      })
+      .then(() => {
+        toast.success('Registration successful! Welcome!', { autoClose: 3000 });
+      })
+      .catch(error => {
+        console.error(error);
+        toast.error('Registration not successful. Please try again!', { autoClose: 3000 });
+      })
 
+
+
+    // send data to the server 
+    const user = { email, password, name }
+    fetch('http://localhost:5000/users', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.insertId) {
+          console.log('user added to the database')
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      })
 
   }
 

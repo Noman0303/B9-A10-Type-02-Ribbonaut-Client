@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Header from '../shared/Header'
 import { NavLink } from 'react-router-dom';
 import Swal from 'sweetalert2'
+import { AuthContext } from '../../provider/AuthProvider';
 
 
 const AddCraftItems = () => {
+
+  const {user} = useContext(AuthContext); 
 
   const handleAddCrafts = event => {
     event.preventDefault();
@@ -118,12 +121,12 @@ const AddCraftItems = () => {
 
                 <label className="form-control w-full ">
                   <span className="label label-text">User Email</span>
-                  <input type="text" name="userEmail" placeholder="Enter user email " className="input input-bordered w-full " />
+                  <input type="text" name="userEmail" placeholder="Enter user email " value={user?.email} className="input input-bordered w-full " />
                 </label>
 
                 <label className="form-control w-full ">
                   <span className="label label-text">User Name</span>
-                  <input type="text" name="userName" placeholder="Enter user name " className="input input-bordered w-full " />
+                  <input type="text" name="userName" placeholder="Enter user name " value={user?.displayName} className="input input-bordered w-full " />
                 </label>
 
               </div>
