@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const CraftItems = ({ craft, crafts, setCrafts }) => {
 
-    const { image, itemName, subcategoryName, shortDescription, price, rating, customization, processingTime, stockStatus, userName, userEmail,_id } = craft
+    const { image, itemName, subcategoryName, shortDescription,_id } = craft
 
     return (
         <div className=" lg:card-side bg-[#F5F4F1] rounded-lg shadow-xl py-2 px-2 border">
