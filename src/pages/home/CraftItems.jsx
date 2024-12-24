@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const CraftItems = ({ craft, crafts, setCrafts }) => {
+const CraftItems = ({ craft }) => {
 
     const { image, itemName, subcategoryName, shortDescription,_id } = craft
 
