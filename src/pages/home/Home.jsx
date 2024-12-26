@@ -4,6 +4,7 @@ import Banner from './Banner'
 import { useLoaderData } from 'react-router-dom'
 import CraftItems from './CraftItems'
 import Footer from '../shared/Footer'
+import CraftCategories from './CraftCategories'
 
 const Home = () => {
 
@@ -33,17 +34,22 @@ const Home = () => {
             ></CraftItems>
           )
         }
-        { 
-          visibleCount<crafts.length &&(
+        {
+          visibleCount < crafts.length && (
             <div className='text-right'>
-            <button onClick={handleViewMore} >
-              View More...
-            </button>
+              <button onClick={handleViewMore} >
+                View More...
+              </button>
             </div>
           )
         }
       </div>
-      <h2>This is Home</h2>
+
+      {/* art & craft category section */}
+      <div className='my-10'>
+        <CraftCategories></CraftCategories>
+      </div>
+
       <Footer></Footer>
     </div>
   )

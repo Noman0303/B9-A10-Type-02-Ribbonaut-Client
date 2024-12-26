@@ -1,0 +1,57 @@
+[
+    {
+      "id": 1,
+      "image": "https://i.ibb.co.com/c6k29hj/Embroidery.jpg",
+      "name": "Embroidery",
+      "short_description": "Creating intricate patterns and designs through stitching.",
+      "types": "Hand Embroidery, Machine Embroidery, Cross-Stitch",
+      "materials": "Thread, Fabric, Needles",
+      "techniques": "Satin Stitch, French Knots, Backstitch"
+    },
+    {
+      "id": 2,
+      "image": "https://i.ibb.co.com/R6sPXhf/Knitting-Crocheting.jpg",
+      "name": "Knitting & Crocheting",
+      "short_description": "Crafting fabric from yarn using knitting needles or crochet hooks.",
+      "types": "Knitting, Crocheting",
+      "materials": "Yarn, Needles, Hooks",
+      "techniques": "Sweaters, Scarves, Socks, Blankets"
+    },
+    {
+      "id": 3,
+      "image": "https://i.ibb.co.com/3Rf0wbr/Quilting.jpg",
+      "name": "Quilting",
+      "short_description": "Sewing together pieces of fabric to create quilted designs.",
+      "types": "Patchwork Quilting, Appliqué Quilting, Paper Piecing",
+      "materials": "Fabric, Batting, Thread",
+      "techniques": "Piecing, Quilting, Binding"
+    },
+    {
+      "id": 4,
+      "image": "https://i.ibb.co.com/GJ2M67N/Bead-Work.jpg",
+      "name": "Beadwork",
+      "short_description": "Designing and creating items using beads.",
+      "types": "Beaded Jewelry, Beaded Embellishments, Beaded Art",
+      "materials": "Beads, Thread, Wire",
+      "techniques": "Stringing, Loom Weaving, Embellishment"
+    },
+    {
+      "id": 5,
+      "image": "https://i.ibb.co.com/wstzq2p/Tie-Dye.jpg",
+      "name": "Tie-Dyeing",
+      "short_description": "Dyeing fabric to create colorful patterns.",
+      "types": "Spiral Patterns, Ombre Dyeing, Shibori Dyeing",
+      "materials": "Dye, Fabric, Rubber Bands",
+      "techniques": "Tie-dye, Dip-dye, Folding"
+    },
+    {
+      "id": 6,
+      "image": "https://i.ibb.co.com/nc0TtfM/Macrame.jpg",
+      "name": "Macrame",
+      "short_description": "Creating decorative items using knotting techniques.",
+      "types": "Wall Hangings, Jewelry, Home Accessories",
+      "materials": "Cord, Beads, Rings",
+      "techniques": "Square Knot, Half Hitch, Lark's Head"
+    }
+  ]
+  
