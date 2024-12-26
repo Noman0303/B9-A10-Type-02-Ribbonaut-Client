@@ -65,7 +65,7 @@ const UpdatePage = () => {
           <NavLink to='/'>Back to home</NavLink>
         </div>
         <div className='text-center lg:px-28 py-16 rounded-md bg-[#F4F3F0]  mt-12 mb-28'>
-          <h2 className='text-3xl lg:text-5xl font-normal font-rancho' >Add New Craft Item</h2>
+          <h2 className='text-3xl lg:text-5xl font-normal font-rancho' >Update Craft Item</h2>
           <p className='my-8 mx-2'>Expand your textile craft collection with our intuitive interface. Input essential details such as item name, short description, price, processing time, stock status, and additional information. Keep your craft shop's offerings fresh and inspiring by introducing new designs and varieties, ensuring your customers always find something new to love.</p>
           <form onSubmit={handleUpdateCrafts} >
             <div className=' lg:grid lg:grid-cols-2 gap-8 px-2'>
