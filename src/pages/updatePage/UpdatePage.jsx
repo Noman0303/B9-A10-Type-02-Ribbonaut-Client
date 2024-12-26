@@ -1,15 +1,19 @@
 import React, { useContext } from 'react'
 import Header from '../shared/Header'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLoaderData, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import { AuthContext } from '../../provider/AuthProvider';
 
 
-const AddCraftItems = () => {
 
-  const {user} = useContext(AuthContext); 
+const UpdatePage = () => {
 
-  const handleAddCrafts = event => {
+  const user = useContext(AuthContext);
+  const { id } = useParams();
+  const craft = useLoaderData();
+  const { image, itemName, subcategoryName, shortDescription, price, rating, customization, processingTime, stockStatus, userName, userEmail } = craft;
+
+  const handleUpdateCrafts = event => {
     event.preventDefault();
 
     const form = event.target;
@@ -26,29 +30,29 @@ const AddCraftItems = () => {
     const userName = form.userName.value;
     const userEmail = form.userEmail.value;
 
-    const newCraftItem = {image, itemName, subcategoryName, shortDescription, price, rating, customization, processingTime, stockStatus, userName, userEmail };
+    const updatedCraft = { image, itemName, subcategoryName, shortDescription, price, rating, customization, processingTime, stockStatus, userName, userEmail };
 
-    console.log(newCraftItem);
+    console.log(updatedCraft);
 
     // send data to the server
-    fetch('http://localhost:5000/crafts', {
-      method: 'POST',
+    fetch(`http://localhost:5000/crafts/${id}`, {
+      method: 'PUT',
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(newCraftItem)
+      body: JSON.stringify(updatedCraft)
     })
       .then(res => res.json())
       .then(data => {
         console.log(data);
 
-        if (data.insertedId) {
+        if (data.modifiedCount > 0) {
           Swal.fire({
             title: 'Success!',
-            text: 'Item Added Successfully',
+            text: 'Item Updated Successfully',
             icon: 'success',
             confirmButtonText: 'Cool'
-          })
+          });
         }
       })
   }
@@ -63,39 +67,43 @@ const AddCraftItems = () => {
         <div className='text-center lg:px-28 py-16 rounded-md bg-[#F4F3F0]  mt-12 mb-28'>
           <h2 className='text-3xl lg:text-5xl font-normal font-rancho' >Add New Craft Item</h2>
           <p className='my-8 mx-2'>Expand your textile craft collection with our intuitive interface. Input essential details such as item name, short description, price, processing time, stock status, and additional information. Keep your craft shop's offerings fresh and inspiring by introducing new designs and varieties, ensuring your customers always find something new to love.</p>
-          <form onSubmit={handleAddCrafts} >
+          <form onSubmit={handleUpdateCrafts} >
             <div className=' lg:grid lg:grid-cols-2 gap-8 px-2'>
 
               <div className='form-control w-full'>
 
                 <label className="form-control w-full ">
                   <span className="label label-text">Image</span>
-                  <input type="text" name="image" placeholder="Enter Image URL" className="input input-bordered w-full " />
+                  <input type="text" name="image" placeholder="Enter Image URL"
+                    defaultValue={image} className="input input-bordered w-full " />
                 </label>
 
                 <label className="form-control w-full ">
                   <span className="label label-text">Item Name</span>
-                  <input type="text" name="itemName" placeholder="Enter Item name" className="input input-bordered w-full " />
+                  <input type="text" name="itemName" placeholder="Enter Item name"
+                    defaultValue={itemName} className="input input-bordered w-full " />
                 </label>
 
                 <label className="form-control w-full ">
                   <span className="label label-text">Subcategory Name</span>
-                  <input type="text" name="subcategoryName" placeholder="Enter Subcategory name" className="input input-bordered w-full " />
+                  <input type="text" name="subcategoryName" placeholder="Enter Subcategory name" defaultValue={subcategoryName} className="input input-bordered w-full " />
                 </label>
 
                 <label className="form-control w-full ">
                   <span className="label label-text">Short Description</span>
-                  <input type="text" name="shortDescription" placeholder="Enter Short Descrption" className="input input-bordered w-full " />
+                  <input type="text" name="shortDescription" placeholder="Enter Short Descrption" defaultValue={shortDescription} className="input input-bordered w-full " />
                 </label>
 
                 <label className="form-control w-full ">
                   <span className="label label-text">Price</span>
-                  <input type="text" name="price" placeholder="Enter Item Price" className="input input-bordered w-full " />
+                  <input type="text" name="price" placeholder="Enter Item Price"
+                    defaultValue={price} className="input input-bordered w-full " />
                 </label>
 
                 <label className="form-control w-full ">
                   <span className="label label-text">Rating</span>
-                  <input type="text" name="rating" placeholder="Enter Item Rating" className="input input-bordered w-full " />
+                  <input type="text" name="rating" placeholder="Enter Item Rating"
+                    defaultValue={rating} className="input input-bordered w-full " />
                 </label>
 
               </div>
@@ -106,27 +114,27 @@ const AddCraftItems = () => {
 
                 <label className="form-control w-full ">
                   <span className="label label-text">Customization-Yes/No</span>
-                  <input type="text" name="customization" placeholder="Enter item customization option" className="input input-bordered w-full " />
+                  <input type="text" name="customization" placeholder="Enter item customization option" defaultValue={customization} className="input input-bordered w-full " />
                 </label>
 
                 <label className="form-control w-full ">
                   <span className="label label-text">Processing Time</span>
-                  <input type="text" name="processingTime" placeholder="Enter item Processing time" className="input input-bordered w-full " />
+                  <input type="text" name="processingTime" placeholder="Enter item Processing time" defaultValue={processingTime} className="input input-bordered w-full " />
                 </label>
 
                 <label className="form-control w-full ">
                   <span className="label label-text">Stock Status - In-Stock/Made-to-order</span>
-                  <input type="text" name="stockStatus" placeholder="Enter item Stock Status " className="input input-bordered w-full " />
+                  <input type="text" name="stockStatus" placeholder="Enter item Stock Status" defaultValue={stockStatus} className="input input-bordered w-full " />
                 </label>
 
                 <label className="form-control w-full ">
                   <span className="label label-text">User Email</span>
-                  <input type="text" name="userEmail" placeholder="Enter user email " defaultValue={user?.email} className="input input-bordered w-full " />
+                  <input type="text" name="userEmail" placeholder="Enter user email " defaultValue={userEmail} className="input input-bordered w-full " />
                 </label>
 
                 <label className="form-control w-full ">
                   <span className="label label-text">User Name</span>
-                  <input type="text" name="userName" placeholder="Enter user name " defaultValue={user?.displayName} className="input input-bordered w-full " />
+                  <input type="text" name="userName" placeholder="Enter user name " defaultValue={userName} className="input input-bordered w-full " />
                 </label>
 
               </div>
@@ -142,4 +150,4 @@ const AddCraftItems = () => {
   )
 }
 
-export default AddCraftItems
+export default UpdatePage

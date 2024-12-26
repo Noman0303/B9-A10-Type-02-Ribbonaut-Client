@@ -5,7 +5,8 @@ import { useLoaderData } from 'react-router-dom'
 const ViewDetails = () => {
 
     const craft = useLoaderData();
-    const { image, itemName, subcategoryName, shortDescription, price, rating, customization, processingTime, stockStatus, userName, userEmail, _id } = craft;
+    const { image, itemName, subcategoryName, shortDescription, price, rating, customization, processingTime, stockStatus } = craft;
+    console.log(craft)
 
     return (
         <div className='p-2'>
