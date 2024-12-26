@@ -3,6 +3,7 @@ import Header from '../shared/Header'
 import Banner from './Banner'
 import { useLoaderData } from 'react-router-dom'
 import CraftItems from './CraftItems'
+import Footer from '../shared/Footer'
 
 const Home = () => {
 
@@ -43,6 +44,7 @@ const Home = () => {
         }
       </div>
       <h2>This is Home</h2>
+      <Footer></Footer>
     </div>
   )
 }

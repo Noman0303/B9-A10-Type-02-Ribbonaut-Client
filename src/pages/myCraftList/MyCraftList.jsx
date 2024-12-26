@@ -4,6 +4,7 @@ import Header from '../shared/Header'
 import LottiAnimation from '../../Animation/LottiAnimation'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../provider/AuthProvider'
+import Footer from '../shared/Footer'
 
 
 const MyCraftList = () => {
@@ -136,6 +137,7 @@ const MyCraftList = () => {
           </div>)
         )}
       </div>
+      <Footer></Footer>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Header from '../shared/Header'
 import { Link, useLoaderData } from 'react-router-dom'
+import Footer from '../shared/Footer';
 
 const AllCraftItems = () => {
 
@@ -44,7 +45,7 @@ const AllCraftItems = () => {
           </tbody>
         </table>
       </div>
-
+      <Footer></Footer>
     </div>
   )
 }

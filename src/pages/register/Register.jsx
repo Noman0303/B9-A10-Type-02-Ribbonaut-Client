@@ -6,6 +6,7 @@ import Header from '../shared/Header'
 import { AuthContext } from '../../provider/AuthProvider';
 import { Link } from 'react-router-dom';
 import { updateProfile } from 'firebase/auth';
+import Footer from '../shared/Footer';
 
 const Register = () => {
 
@@ -151,6 +152,7 @@ const Register = () => {
         </div>
       </div>
       <ToastContainer></ToastContainer>
+      <Footer></Footer>
     </div>
   )
 }

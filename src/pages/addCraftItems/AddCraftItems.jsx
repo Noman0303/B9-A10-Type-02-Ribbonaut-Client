@@ -3,11 +3,12 @@ import Header from '../shared/Header'
 import { NavLink } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import { AuthContext } from '../../provider/AuthProvider';
+import Footer from '../shared/Footer';
 
 
 const AddCraftItems = () => {
 
-  const {user} = useContext(AuthContext); 
+  const { user } = useContext(AuthContext);
 
   const handleAddCrafts = event => {
     event.preventDefault();
@@ -26,7 +27,7 @@ const AddCraftItems = () => {
     const userName = form.userName.value;
     const userEmail = form.userEmail.value;
 
-    const newCraftItem = {image, itemName, subcategoryName, shortDescription, price, rating, customization, processingTime, stockStatus, userName, userEmail };
+    const newCraftItem = { image, itemName, subcategoryName, shortDescription, price, rating, customization, processingTime, stockStatus, userName, userEmail };
 
     console.log(newCraftItem);
 
@@ -137,7 +138,7 @@ const AddCraftItems = () => {
           </form>
         </div>
       </div >
-
+      <Footer></Footer>
     </div >
   )
 }
