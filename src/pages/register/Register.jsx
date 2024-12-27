@@ -62,7 +62,7 @@ const Register = () => {
 
     // send data to the server 
     const user = { email, password, name }
-    fetch('http://localhost:5000/users', {
+    fetch('https://ribbonaut-server.vercel.app/users', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

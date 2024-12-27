@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { Slide } from "react-awesome-reveal";
+
+
 
 const CraftCategories = () => {
 
@@ -16,13 +19,17 @@ const CraftCategories = () => {
 
     return (
         <div className="mt-24">
+            <Slide
+            direction="left"
+            duration={2000}>
             <h2 className="font-semibold text-2xl text-center bg-slate-200 p-2 rounded-full">Total Sub Categories : {subCategories.length} </h2>
+            </Slide>
             
-            <div className="mx-auto mt-4 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+            <div className="mx-auto mt-4 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3  ">
                 {
                     subCategories.map(subcategory =>
                         <Link to={`/subCategoryItems/${subcategory.name}`}>
-                        <div className=" lg:card-side bg-[#F5F4F1] rounded-lg shadow-xl py-2 px-2 border gap-2"
+                        <div className=" lg:card-side bg-[#F5F4F1] rounded-lg shadow-xl py-2 px-2 border gap-2 transition-all duration-300 ease-in-out transform hover:scale-105"
                             key={subcategory.id}
                             subcategory={subcategory}>
                             <img className='rounded-lg my-2 border' src={subcategory.image} alt="" />

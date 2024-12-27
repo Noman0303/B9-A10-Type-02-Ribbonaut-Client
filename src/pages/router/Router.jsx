@@ -26,14 +26,14 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/crafts')
+        loader: () => fetch('https://ribbonaut-server.vercel.app/crafts')
       },
       {
         path: "/craftItems/:id",
         element: (<PrivateRoute>
           <ViewDetails></ViewDetails>
         </PrivateRoute>),
-        loader: ({ params }) => fetch(`http://localhost:5000/crafts/${params.id}`)
+        loader: ({ params }) => fetch(`https://ribbonaut-server.vercel.app/crafts/${params.id}`)
       },
       {
         path: '/addCraftitems',
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       {
         path: '/allCraftitems',
         element: <AllCraftItems></AllCraftItems>,
-        loader: () => fetch('http://localhost:5000/crafts')
+        loader: () => fetch('https://ribbonaut-server.vercel.app/crafts')
       },
       {
         path: '/myCraftList',
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
         element: (<PrivateRoute>
           <UpdatePage></UpdatePage>
         </PrivateRoute>),
-        loader: ({ params }) => fetch(`http://localhost:5000/crafts/${params.id}`)
+        loader: ({ params }) => fetch(`https://ribbonaut-server.vercel.app/crafts/${params.id}`)
       },
       {
         path: '/login',

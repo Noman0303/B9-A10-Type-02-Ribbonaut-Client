@@ -21,7 +21,7 @@ const MyCraftList = () => {
   useEffect(() => {
     if (user?.email) {
       // Fetch crafts by user email
-      fetch(`http://localhost:5000/craftsbyEmail/${user.email}`)
+      fetch(`https://ribbonaut-server.vercel.app/craftsbyEmail/${user.email}`)
         .then(res => res.json())
         .then(data => {
           setMyCraftItems(data);
@@ -63,7 +63,7 @@ const MyCraftList = () => {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/crafts/${id}`, {
+          fetch(`https://ribbonaut-server.vercel.app/crafts/${id}`, {
             method: 'DELETE',
           })
             .then(res => res.json())

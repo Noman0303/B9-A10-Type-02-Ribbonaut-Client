@@ -17,7 +17,7 @@ const SubCategoryItems = () => {
     useEffect(() => {
 
         // Fetch items based on Subcategory
-        fetch(`http://localhost:5000/crafts?subCategory=${subCategoryName}`)
+        fetch(`https://ribbonaut-server.vercel.app/crafts?subCategory=${subCategoryName}`)
             .then(res => res.json())
             .then(data => {
                 setItems(data);

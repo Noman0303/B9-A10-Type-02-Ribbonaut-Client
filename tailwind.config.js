@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        Playfair: ["Raleway", "serif"],
+        Playfair: ["Playfair", "serif"],
         Raleway: ["Raleway", "serif"],
         Lora: ["Lora", "serif"],
       }
@@ -19,5 +19,4 @@ export default {
     ('daisyui'),
   ],
   darkMode: 'class',
-  
 }

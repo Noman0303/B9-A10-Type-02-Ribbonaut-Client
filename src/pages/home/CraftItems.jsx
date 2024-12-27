@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Bounce } from "react-awesome-reveal";
 
 const CraftItems = ({ craft }) => {
 
@@ -12,11 +13,13 @@ const CraftItems = ({ craft }) => {
             <p>Name : {itemName} </p>
             <p>Sub Category Name : {subcategoryName} </p>
             <p>{shortDescription}</p>
+            <Bounce>
             <div className='text-right my-3 '>
                 <Link to={`/craftItems/${_id}`} >
                     <button type="button" className='btn btn-outline btn-accent '>View Details</button>
                 </Link>
             </div>
+            </Bounce>
         </div>
     )
 }

@@ -35,7 +35,7 @@ const UpdatePage = () => {
     console.log(updatedCraft);
 
     // send data to the server
-    fetch(`http://localhost:5000/crafts/${id}`, {
+    fetch(`https://ribbonaut-server.vercel.app/crafts/${id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json'
