@@ -22,7 +22,7 @@ const Home = () => {
       <Header></Header>
       <Banner></Banner>
       {/* craftitem section */}
-      <p>Number of total crafts :  {crafts.length}</p>
+      <h2 className=' text-center font-semibold text-2xl my-2 bg-orange-100 rounded-full p-2 border-2' >Number of total crafts :  {crafts.length}</h2>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10 '>
         {
           crafts.slice(0, visibleCount).map(craft =>

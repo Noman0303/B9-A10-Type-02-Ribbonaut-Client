@@ -14,6 +14,7 @@ import PrivateRoute from './privateRoute';
 import ViewDetails from '../viewDetails/ViewDetails';
 import UpdatePage from '../updatePage/UpdatePage';
 import Error from '../errorPage/Error';
+import SubCategoryItems from '../subCategoryItems/SubCategoryItems';
 
 
 const router = createBrowserRouter([
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <MyCraftList></MyCraftList>
         </PrivateRoute>,
+      },
+      {
+        path: "/subCategoryItems/:subCategoryName",
+        element: <SubCategoryItems></SubCategoryItems>
       },
       {
         path: '/updatePage/:id',

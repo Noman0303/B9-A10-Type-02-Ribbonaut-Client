@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../shared/Header'
 import { useLoaderData } from 'react-router-dom'
+import Footer from '../shared/Footer';
 
 const ViewDetails = () => {
 
@@ -25,6 +26,8 @@ const ViewDetails = () => {
                 <p> <span className='font-semibold'>Processing Time : </span>{processingTime}</p>
                 <p> <span className='font-semibold'>Stock Availability : </span>{stockStatus}</p>
             </div>
+
+            <Footer></Footer>
         </div>
     )
 }

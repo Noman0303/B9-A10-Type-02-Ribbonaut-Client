@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 const CraftCategories = () => {
 
@@ -12,12 +13,15 @@ const CraftCategories = () => {
     }, []);
     console.log(subCategories);
 
+
     return (
         <div className="mt-24">
-            <h2 className="font-bold text-4xl text-center">Total Sub Categories : {subCategories.length} </h2>
+            <h2 className="font-semibold text-2xl text-center bg-slate-200 p-2 rounded-full">Total Sub Categories : {subCategories.length} </h2>
+            
             <div className="mx-auto mt-4 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
                 {
                     subCategories.map(subcategory =>
+                        <Link to={`/subCategoryItems/${subcategory.name}`}>
                         <div className=" lg:card-side bg-[#F5F4F1] rounded-lg shadow-xl py-2 px-2 border gap-2"
                             key={subcategory.id}
                             subcategory={subcategory}>
@@ -28,10 +32,11 @@ const CraftCategories = () => {
                             <p><span className='font-semibold'>Item Materials : </span>{subcategory.materials}</p>
                             <p><span className='font-semibold'>Production technique : </span>{subcategory.techniques}</p>
                         </div>
+                        </Link>
                     )
                 }
-
             </div>
+            
         </div>
     )
 }
