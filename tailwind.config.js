@@ -7,15 +7,17 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily:{
-        Playfair :["Raleway", "serif"],
-        Raleway : ["Raleway", "serif"],
-        Lora:["Lora", "serif"],
+      fontFamily: {
+        Playfair: ["Raleway", "serif"],
+        Raleway: ["Raleway", "serif"],
+        Lora: ["Lora", "serif"],
       }
     },
   },
-  plugins: [
-    require('daisyui'),
+  
+  plugins: [require
+    ('daisyui'),
   ],
+  darkMode: 'class',
+  
 }
-

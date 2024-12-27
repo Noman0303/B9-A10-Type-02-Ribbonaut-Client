@@ -100,7 +100,7 @@ const Login = () => {
                     placeholder="password"
                     className="input input-bordered"
                     required />
-                  <span className='absolute bottom-11 right-3' onClick={() => setShowPassword(!showPassword)}>
+                  <span className='absolute bottom-4 right-3' onClick={() => setShowPassword(!showPassword)}>
                     {
                       showPassword ? <FaEyeSlash /> : <FaEye />
                     }

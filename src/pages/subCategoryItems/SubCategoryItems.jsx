@@ -43,7 +43,7 @@ const SubCategoryItems = () => {
                 {
                     items.map(item =>
 
-                        <div className=" lg:card-side bg-[#F5F4F1] rounded-lg shadow-xl py-2 px-2 border gap-2"
+                        <div className=" lg:card-side bg-[#F5F4F1] rounded-lg shadow-xl py-2 px-2 border gap-2 "
                             key={item.id}
                             item={item}>
                             <img className='rounded-lg my-2 border' src={item.image} alt="" />
